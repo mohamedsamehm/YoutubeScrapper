@@ -80,21 +80,24 @@ class CourseController extends Controller
         // Counters we'll return at the end
         $coursesFound = 0;
         $duplicatesSkipped = 0;
+        $stop = false;
 
         // ── Steps 1 + 2 + 3: Loop through each category ──────────────────────
         foreach ($categories as $category) {
-
+            if ($stop) break;
             // STEP 1: Ask the AI to give us search queries for this category
             $queries = $this->generateQueriesWithAI($category);
 
             // STEP 2 + 3: For each query, search YouTube then save results
             foreach ($queries as $query) {
+                if ($stop) break;
 
                 // STEP 2: Search YouTube for playlists matching this query
                 $playlists = $this->searchYouTube($query);
 
                 // STEP 3: Save each playlist to the database
                 foreach ($playlists as $playlist) {
+                    if ($stop) break;
 
                     // Check if this playlist already exists (deduplication)
                     $alreadyExists = Course::where('playlist_id', $playlist['playlist_id'])->exists();
@@ -119,6 +122,12 @@ class CourseController extends Controller
                     ]);
 
                     $coursesFound++;
+
+                    if ($coursesFound >= 2) {
+                        $stop = true;
+                        break;
+                    }
+
                 }
             }
         }
@@ -136,7 +145,7 @@ class CourseController extends Controller
 
     private function generateQueriesWithAI(string $category): array
     {
-        $prompt = "Generate exactly 10 YouTube search queries to find educational playlist courses about: \"{$category}\".
+        $prompt = "Generate exactly 20 YouTube search queries to find educational playlist courses about: \"{$category}\".
 Mix beginner, intermediate, advanced levels. Use formats like: full course, tutorial series, bootcamp, masterclass.
 Return ONLY a JSON array of strings, no explanation. Example: [\"query one\", \"query two\"]";
 

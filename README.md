@@ -30,10 +30,8 @@ A Laravel-based application that uses AI and YouTube Data API to automatically g
 # ⚙️ Setup Instructions
 
 ## 1. Clone the Repository
-
-bash
-git clone https://github.com/your-username/youtube-ai-scraper.git
-cd youtube-ai-scraper
+https://github.com/mohamedsamehm/YoutubeScrapper.git
+cd youtube-scrapper
 
 ## 2. Install Dependencies
 composer install
@@ -60,14 +58,14 @@ Enable it from Google Cloud Console:
 	•	https://console.cloud.google.com/apis/library/youtube.googleapis.com
 
 ### Add to .env:
-YOUTUBE_API_KEY=your_youtube_api_key
+YOUTUBE_API_KEY='AIzaSyBoUvyrKwT-dDRPnrASjl9CaIUi8zuaNdc'
  
 ## 2. Google Gemini API
 Enable Generative Language API:
 	•	https://console.cloud.google.com/apis/library/generativelanguage.googleapis.com
 
 ### Add to .env:
-GEMINI_API_KEY=your_gemini_api_key
+GEMINI_API_KEY='AIzaSyDVf4Z6TAxJ1bjLpynW3I-wGn6H9muDyRw'
 
 # 🚀 How to Run the Project
 ## 1. Start Laravel Server
@@ -90,7 +88,7 @@ Graphic Design
 	•	Store unique results in database
 ### 4.	Browse curated playlists from dashboard
 
-# 👨‍💻 Author
+# 👨‍💻 Author Mohaemd Sameh
 
 ## 🔥 Why this version is strong
 - Looks like **real SaaS GitHub project**

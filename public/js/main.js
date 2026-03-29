@@ -56,6 +56,7 @@ async function startFetch() {
         stopBtn.disabled = true;
 
         startBtn.innerHTML = '<i class="fa-solid fa-play"></i> Start Fetching';
+        setTimeout(() => location.reload(), 800);
     }
 }
 

@@ -72,7 +72,7 @@
                     <div class="cat-tabs">
                         <a href="{{ route('home', array_merge(request()->except(['category', 'page']), ['category' => 'all'])) }}"
                             class="text-decoration-none cat-tab {{ $activeCategory === 'all' ? 'active' : '' }}">All<span
-                                class="tab-count"><span class="tab-count">{{ $courses->total() }}</span></span></a>
+                                class="tab-count"><span class="tab-count">{{ $counts->sum() }}</span></span></a>
 
                         @foreach($categories as $cat)
                             <a href="{{ route('home', array_merge(request()->except(['category', 'page']), ['category' => $cat])) }}"
