@@ -136,7 +136,7 @@ class CourseController extends Controller
 
     private function generateQueriesWithAI(string $category): array
     {
-        $prompt = "Generate exactly 1 YouTube search queries to find educational playlist courses about: \"{$category}\".
+        $prompt = "Generate exactly 10 YouTube search queries to find educational playlist courses about: \"{$category}\".
 Mix beginner, intermediate, advanced levels. Use formats like: full course, tutorial series, bootcamp, masterclass.
 Return ONLY a JSON array of strings, no explanation. Example: [\"query one\", \"query two\"]";
 
